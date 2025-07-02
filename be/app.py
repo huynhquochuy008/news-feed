@@ -4,8 +4,11 @@ from utils.news_utils import get_pnj_gold_price, fetch_news_by_region, schedule_
 
 
 app = Flask(__name__)
-CORS(app)
-
+CORS(app, origins=[
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://news-feed-rust-three.vercel.app"
+])
 RSS_FEEDS = {
     "vnexpress": "https://vnexpress.net/rss/tin-moi-nhat.rss",
     "zingnews": "https://zingnews.vn/rss.html",
