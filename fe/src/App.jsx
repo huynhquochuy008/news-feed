@@ -55,6 +55,8 @@ const GoldRow = ({ item }) => (
   </div>
 );
 
+const apiUrl = import.meta.env.BACKEND_API_URL;
+
 const App = () => {
   const [news, setNews] = useState([]);
   const [search, setSearch] = useState("");
@@ -63,16 +65,16 @@ const App = () => {
   const [country, setCountry] = useState("VN");
 
   useEffect(() => {
-    let endpoint = "http://192.168.56.10:5000/news";
-    if (country === "US") endpoint = "http://192.168.56.10:5000/news/us";
-    else if (country === "EU") endpoint = "http://192.168.56.10:5000/news/eu";
+    let endpoint = `${apiUrl}/news`;
+    if (country === "US") endpoint = `${apiUrl}/news/us`;
+    else if (country === "EU") endpoint = `${apiUrl}/news/eu`;
     fetch(endpoint)
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, [country]);
 
   useEffect(() => {
-    fetch("http://192.168.56.10:5000/gold")
+    fetch(`${apiUrl}/gold`)
       .then((res) => res.json())
       .then((data) => setGoldData(data));
   }, []);
