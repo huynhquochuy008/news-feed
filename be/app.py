@@ -41,4 +41,4 @@ def gold_price():
 if __name__ == "__main__":
     fetch_news_by_region()  # Lấy dữ liệu lần đầu
     schedule_fetch()  # Bắt đầu scheduler
-    app.run(debug=True, host="192.168.56.10")
+    app.run(debug=True)
